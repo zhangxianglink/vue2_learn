@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+   <div id = 'ex1'>
+    <custom-input v-model="searchText"></custom-input>
+    <p>{{searchText}}</p>
+   </div>
+    </body>
+    <script type="text/javascript">
+       // 组件自定义model
+        Vue.component('custom-input',{
+            props:{
+               value:''
+            },
+            template: `
+            <input :value="value" @input="$emit('input',$event.target.value)">  
+           `
+        });
+
+       var vm =  new Vue({
+            el:"#ex1",
+            data: {
+                    searchText: 'aaaaa',
+            }
+        });
+    </script>
+</html>

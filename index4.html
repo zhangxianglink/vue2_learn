@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="t">
+        <template  v-if="awesome">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <h1 v-else>else</h1>
+    </div>
+
+    <h1 id = "h" v-show="show">v-show</h1>
+
+    <div id ="t3">
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+          </template>
+          <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+          </template>
+          <button @click="bclik()">toggle login type</button>
+    </div>
+</body>
+<script type="text/javascript">
+var vm = new Vue({
+    el:'#t3',
+    data: {
+        loginType : 'username'
+    },
+    methods: {
+        bclik: function(){
+            if(this.loginType === 'username'){
+                this.loginType = 'else'
+            }else{
+                this.loginType = 'username'
+            }
+        }
+    }
+});
+var vm3 = new Vue({
+    el:'#h',
+    data: {
+        show: true
+    }
+});
+var vm2 = new Vue({
+    el:'#t',
+    data: {
+        awesome: false
+    }
+});
+</script>
+</html>

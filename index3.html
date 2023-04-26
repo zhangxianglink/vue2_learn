@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id = "example">
+    <p>message: {{message}}</p>
+    <p>egassem computed: {{egassem}}</p>    
+    <p>egassem methods: {{egassem2()}}</p>    
+</div>
+
+<div id="demo">{{fullName}}</div>
+</body>
+<script type="text/javascript">
+var vm = new Vue({
+    el: '#example',
+    data() {
+        return {
+            message: '这样的一天',
+        };
+    },
+    // 方法
+    methods: {
+        egassem2: function(){
+            return this.message.split('').reverse().join('')
+        }
+    },
+    // 计算属性
+    // 这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+    computed: {
+        egassem: function(){
+            return this.message.split('').reverse().join('')
+        }
+    }
+});
+// 属性变化计算属性操作
+var vm2 = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar'
+  },
+  computed: {
+    // vm.fullName = 'a b'
+    fullName: {
+        get: function () {
+            return this.firstName + ' ' + this.lastName
+        },
+        set: function(e) {
+            var names = e.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[1]
+        }
+    }
+  }
+});
+</script>
+</html>

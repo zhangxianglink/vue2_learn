@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <span id = "sp" v-once>一次性插值：{{msg}}</span>
+    <span id = "sp2" v-html="rawHtml"></span>
+    <button :style="style" @click="print">简写</button>
+</body>
+<script type="text/javascript">
+    // 文字
+ var vm = new Vue({
+    el:"#sp",
+    data() {
+        return {
+            msg: '马可波罗',
+        };
+    },
+ });
+ // html
+ var vm2 = new Vue({
+    el:"#sp2",
+    data: {
+        "rawHtml": "<h3>html</h3> "
+    }
+ });
+// v-bind 响应式的更新html attribute
+// 缩写
+var vm3 = new Vue({
+    el:"button",
+    data: {
+        style:" fontSize: 30px "
+    },
+    methods: {
+        print: function(){
+            console.log("-----------------")
+        }
+    }
+ });
+</script>
+</html>
